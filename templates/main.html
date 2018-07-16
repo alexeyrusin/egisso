@@ -1,0 +1,89 @@
+{% include '/header.html' %}
+
+
+<div class="container">
+{% include '/menu.html' %}
+
+<div id='main'></div>
+
+<script>
+$(document).ready(function(){
+		function show()
+		{
+			$.ajax({
+				url: "http://localhost:5000/status0",
+				cache: false,
+				success: function(html){
+					$("#main").html(html);
+				}
+			});
+		}
+
+		$(document).ready(function(){
+			show();
+			setInterval('show()',5000);
+
+		});	
+});
+
+    $(document).on('click', '#add', function() {
+		function show()
+		{
+			$.ajax({
+				url: "http://localhost:5000/add",
+				cache: false,
+				success: function(html){
+					$("#main").html(html);
+				}
+			});
+		}
+
+		$(document).ready(function(){
+			show();
+			setInterval('show()',5000);
+
+		});		
+    });
+	
+   $(document).on('click', '#status1', function() {
+		function show()
+		{
+			$.ajax({
+				url: "http://localhost:5000/status1",
+				cache: false,
+				success: function(html){
+					$("#main").html(html);
+				}
+			});
+		}
+
+		$(document).ready(function(){
+			show();
+			setInterval('show()',5000);
+
+		});		
+    });
+	
+   $(document).on('click', '#status0', function() {
+		function show()
+		{
+			$.ajax({
+				url: "http://localhost:5000/status0",
+				cache: false,
+				success: function(html){
+					$("#main").html(html);
+				}
+			});
+		}
+
+		$(document).ready(function(){
+			show();
+			setInterval('show()',5000);
+
+		});		
+    });
+</script>
+
+		</div><!-- container -->
+    </body>
+</html>

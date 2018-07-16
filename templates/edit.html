@@ -1,0 +1,157 @@
+{% include '/header.html' %}
+
+
+<div class="container">
+<style>
+textarea{width:100%}
+.col{margin:20px; border: 1px solid black}
+.two{background-color:gray}
+.container{padding-top:20px}
+</style>
+
+
+{% for d in data %}
+<form action="/edit_update" method="POST">
+
+
+  <div class="row">
+    <div class="col">
+		Входящий номер документа
+		<br>
+		<input type="text"  name="f1" value="{{d[3]}}">
+    </div>
+    <div class="col">
+      	Дата поступления документа
+		<br>
+		<input type="date" name="f2" value="{{d[4]}}">
+    </div>
+  </div>
+  
+  
+  <div class="row two">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col">
+      1 of 3
+    </div>
+  </div>
+  
+  
+  <ul>
+
+   
+   <li>Информация о заявителе
+    <ul>
+		<li>ФИО
+			<input type="text"  name="f3" value="{{d[5]}}">
+		</li>
+
+		<li>адрес
+			<textarea  name="f4">{{d[6]}}</textarea>
+		</li>
+		
+		<li>категория обратившегося
+			<textarea  name="f5">{{d[7]}}</textarea>
+		</li>	
+		
+    </ul>
+   </li>
+   
+<hr>   
+   
+   <li>Информация о документе
+    <ul>
+		<li>Откуда поступил документ
+			<textarea  name="f6">{{d[8]}}</textarea>
+		</li>
+
+		<li>вид обращения
+        <select class="selectpicker" size="3" name="f20" value="{{d[20]}}">
+            <option value="заявление">заявление</option>
+            <option value="жалоба">жалоба</option>
+            <option value="предложение">предложение</option>
+        </select>
+
+		</li>	
+		
+		<li>номер
+			<input type="text" name="f7" value="{{d[9]}}">
+		</li>
+		
+		<li>дата
+		<input type="date" name="f8" value="{{d[10]}}">
+		</li>		
+    </ul>
+   </li>   
+  
+
+    <li>
+		Краткое содержание поднятых вопросов
+		<textarea  name="f9">{{d[11]}}</textarea>
+    </li> 
+
+	
+<hr>	
+	
+   <li>Информация о резолюции
+    <ul>
+		<li>Резолюция руководства
+			<textarea  name="f10">{{d[12]}}</textarea>
+		</li>
+
+		<li>дата
+		<input type="date" name="f11" value="{{d[13]}}">
+		</li>
+		
+		<li>исполнитель
+			<textarea  name="f12">{{d[14]}}</textarea>
+		</li>
+		
+		<li>срок исполнения
+		<input type="date" name="f13" value="{{d[15]}}">
+		</li>			
+    </ul>
+   </li> 
+
+<hr>   
+   <li>
+    <ul>
+		<li>Дата
+		<input type="date" name="f14" value="{{d[16]}}">
+		</li>
+
+		<li>доп. контроль
+			<textarea  name="f15">{{d[17]}}</textarea>
+		</li>
+		
+		<li>принятые решения
+			<textarea  name="f16">{{d[18]}}</textarea>
+		</li>
+		
+		<li>исполнитель
+			<textarea  name="f17">{{d[19]}}</textarea>
+		</li>
+		<li>снятие с контроля
+			<textarea  name="f18">{{d[20]}}</textarea>
+		</li>		
+    </ul>
+   </li>
+   
+    <li>
+		Номер дела по номенклатуре
+		<textarea  name="f19">{{d[21]}}</textarea>
+   </li>  
+   
+ </ul>
+<button type='submit'>Сохранить</button>
+        </form>
+  
+{% endfor %}
+
+		</div><!-- container -->
+    </body>
+</html>

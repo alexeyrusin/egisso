@@ -1,0 +1,113 @@
+
+<style>
+textarea{width:100%}
+</style>
+
+<form action="/add" method="POST">
+  <ul>
+   <li>
+		Входящий номер документа
+		<textarea  name="f1"></textarea>
+   </li>
+   
+    <li>
+		Дата поступления документа
+		<input type="date" name="f2" value="{{cur_date[0][0:4]}}-{{cur_date[0][5:7]}}-{{cur_date[0][8:10]}}">
+   </li>
+   
+   <li>Информация о заявителе
+    <ul>
+		<li>ФИО
+			<textarea  name="f3"></textarea>
+		</li>
+
+		<li>адрес
+			<textarea  name="f4"></textarea>
+		</li>
+		
+		<li>категория обратившегося
+			<textarea  name="f5"></textarea>
+		</li>		
+    </ul>
+   </li>
+   
+<hr>   
+   
+   <li>Информация о документе
+    <ul>
+		<li>Откуда поступил документ
+			<textarea  name="f6"></textarea>
+		</li>
+
+		<li>номер
+			<textarea  name="f7"></textarea>
+		</li>
+		
+		<li>дата
+		<input type="date" name="f8" value="{{cur_date[0][0:4]}}-{{cur_date[0][5:7]}}-{{cur_date[0][8:10]}}">
+		</li>		
+    </ul>
+   </li>   
+  
+
+    <li>
+		Краткое содержание поднятых вопросов
+		<textarea  name="f9"></textarea>
+    </li> 
+
+	
+<hr>	
+	
+   <li>Информация о резолюции
+    <ul>
+		<li>Резолюция руководства
+			<textarea  name="f10"></textarea>
+		</li>
+
+		<li>дата
+		<input type="date" name="f11" value="{{cur_date[0][0:4]}}-{{cur_date[0][5:7]}}-{{cur_date[0][8:10]}}">
+		</li>
+		
+		<li>исполнитель
+			<textarea  name="f12"></textarea>
+		</li>
+		
+		<li>срок исполнения
+		<input type="date" name="f13" value="{{cur_date[0][0:4]}}-{{cur_date[0][5:7]}}-{{cur_date[0][8:10]}}">
+		</li>			
+    </ul>
+   </li> 
+
+<hr>   
+   <li>
+    <ul>
+		<li>Дата
+		<input type="date" name="f14" value="{{cur_date[0][0:4]}}-{{cur_date[0][5:7]}}-{{cur_date[0][8:10]}}">
+		</li>
+
+		<li>индекс документа
+			<textarea  name="f15"></textarea>
+		</li>
+		
+		<li>принятые решения
+			<textarea  name="f16"></textarea>
+		</li>
+		
+		<li>исполнитель
+			<textarea  name="f17"></textarea>
+		</li>
+		<li>снятие с контроля
+			<textarea  name="f18"></textarea>
+		</li>		
+    </ul>
+   </li>
+   
+    <li>
+		Номер дела по номенклатуре
+		<textarea  name="f19"></textarea>
+   </li>  
+   
+ </ul>
+<button type='submit'>Сохранить</button>
+        </form>
+  
