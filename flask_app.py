@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 def database(db_qery):
     try:
-        conn = sqlite3.connect('db.db')
+        conn = sqlite3.connect("C:\\Users\mku-center\Downloads\db.db")
         c = conn.cursor()
         c.execute(db_qery)
         data = c.fetchall()
@@ -35,6 +35,16 @@ def mbdou():
         data = database(str(db_qery))
         uuidtest = uuid.uuid4()
         return render_template('mbdou_lgot_pit.html', data=data, uuidtest=uuidtest)
+    else:
+        pass
+
+@app.route('/1', methods=['GET', 'POST'])
+def one():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        uuidtest = uuid.uuid4()
+        return render_template('1-4.html', data=data, uuidtest=uuidtest)
     else:
         pass
 
@@ -115,10 +125,8 @@ def new2():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
         data = database(str(db_qery))
-        vata = {}
         for d in data:
             v = str(uuid.uuid4())
-            #db_qery = 'INSERT INTO data(column11) VALUES("%s") WHERE column1="%s"' % (str(v), str(d[0]))
             db_qery = 'UPDATE data SET column13="%s" WHERE column1="%s"' % (str(v), str(d[0]))
             data = database(str(db_qery))            
         return str(d[0])
