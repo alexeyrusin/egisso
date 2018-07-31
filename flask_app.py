@@ -119,7 +119,7 @@ def mbdou():
         pass
 
 @app.route('/сады категории', methods=['GET', 'POST'])
-def cat2():
+def cat3():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
         data = database(str(db_qery))
