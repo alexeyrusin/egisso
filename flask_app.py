@@ -18,7 +18,7 @@ def database(db_qery):
     except Exception as error:
         return str(error)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/оздоровление', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
@@ -28,17 +28,8 @@ def index():
     else:
         pass
 
-@app.route('/mbdou', methods=['GET', 'POST'])
-def mbdou():
-    if request.method == 'GET':
-        db_qery = 'SELECT * FROM data'
-        data = database(str(db_qery))
-        uuidtest = uuid.uuid4()
-        return render_template('mbdou_lgot_pit.html', data=data, uuidtest=uuidtest)
-    else:
-        pass
 
-@app.route('/1', methods=['GET', 'POST'])
+@app.route('/питание', methods=['GET', 'POST'])
 def one():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
@@ -48,7 +39,7 @@ def one():
     else:
         pass
 
-@app.route('/cat', methods=['GET', 'POST'])
+@app.route('/оздоровление категории', methods=['GET', 'POST'])
 def cat():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
@@ -71,7 +62,63 @@ def cat():
             data = database(str(db_qery))
         return str('yeap')
 
-@app.route('/cat2', methods=['GET', 'POST'])
+@app.route('/школы категории', methods=['GET', 'POST'])
+def cat2():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        for d in data:
+            v = ''
+            if d[9].upper() == 'ДЕТИ ИНВАЛИДЫ':
+                v = '354f3255-83ea-43ee-94e6-8eb7bdd7484e'
+            elif d[9].upper() == 'ДЕТИ С ОВЗ':
+                v = 'cc07b349-38a2-4a6d-9b99-3c29097f3389'
+            elif d[9].upper() == 'ДЕТИ СИРОТЫ':
+                v = '56217475-a433-4d97-a62e-8c1eeae0bf00'
+            elif d[9].upper() == 'ДЕТИ ОСТАВШИЕСЯ БЕЗ ПОПЕЧЕНИЯ РОДИТЕЛЕЙ':
+                v = '690abfd0-9bfc-4b7b-b312-004b94405dc3'
+            else:
+                print('no')
+            db_qery = 'UPDATE data SET column10="%s" WHERE column1="%s"' % (str(v), str(d[0]))
+            data = database(str(db_qery))
+        return str('yeap')
+
+@app.route('/школы', methods=['GET', 'POST'])
+def mbou():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        uuidtest = uuid.uuid4()
+        return render_template('mbou_lgot_pit.html', data=data, uuidtest=uuidtest)
+    else:
+        pass
+
+@app.route('/оздоровление уникальность', methods=['GET', 'POST'])
+def new():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        vata = {}
+        for d in data:
+            v = str(uuid.uuid4())
+            #db_qery = 'INSERT INTO data(column11) VALUES("%s") WHERE column1="%s"' % (str(v), str(d[0]))
+            db_qery = 'UPDATE data SET column11="%s" WHERE column1="%s"' % (str(v), str(d[0]))
+            data = database(str(db_qery))            
+        return str(d[0])
+    else:
+        pass
+    
+@app.route('/сады', methods=['GET', 'POST'])
+def mbdou():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        uuidtest = uuid.uuid4()
+        return render_template('mbdou_lgot_pit.html', data=data, uuidtest=uuidtest)
+    else:
+        pass
+
+@app.route('/сады категории', methods=['GET', 'POST'])
 def cat2():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
@@ -92,35 +139,7 @@ def cat2():
             data = database(str(db_qery))
         return str('yeap')
 
-@app.route('/time', methods=['GET', 'POST'])
-def time():
-    if request.method == 'GET':
-        db_qery = 'SELECT * FROM data'
-        data = database(str(db_qery))
-        for d in data:
-            v = datetime.now()
-            db_qery = 'UPDATE data SET column12="%s" WHERE column1="%s"' % (str(v), str(d[0]))
-            data = database(str(db_qery))            
-        return str(v)
-    else:
-        pass
-
-@app.route('/new', methods=['GET', 'POST'])
-def new():
-    if request.method == 'GET':
-        db_qery = 'SELECT * FROM data'
-        data = database(str(db_qery))
-        vata = {}
-        for d in data:
-            v = str(uuid.uuid4())
-            #db_qery = 'INSERT INTO data(column11) VALUES("%s") WHERE column1="%s"' % (str(v), str(d[0]))
-            db_qery = 'UPDATE data SET column11="%s" WHERE column1="%s"' % (str(v), str(d[0]))
-            data = database(str(db_qery))            
-        return str(d[0])
-    else:
-        pass
-    
-@app.route('/new2', methods=['GET', 'POST'])
+@app.route('/сады уникальность', methods=['GET', 'POST'])
 def new2():
     if request.method == 'GET':
         db_qery = 'SELECT * FROM data'
@@ -130,6 +149,19 @@ def new2():
             db_qery = 'UPDATE data SET column13="%s" WHERE column1="%s"' % (str(v), str(d[0]))
             data = database(str(db_qery))            
         return str(d[0])
+    else:
+        pass
+    
+@app.route('/время', methods=['GET', 'POST'])
+def time():
+    if request.method == 'GET':
+        db_qery = 'SELECT * FROM data'
+        data = database(str(db_qery))
+        for d in data:
+            v = datetime.now()
+            db_qery = 'UPDATE data SET column12="%s" WHERE column1="%s"' % (str(v), str(d[0]))
+            data = database(str(db_qery))            
+        return str(v)
     else:
         pass
 
