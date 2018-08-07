@@ -62,6 +62,7 @@ def cat():
             data = database(str(db_qery))
         return str('yeap')
 
+##питание кол льготное
 @app.route('/школы категории', methods=['GET', 'POST'])
 def cat2():
     if request.method == 'GET':
@@ -92,6 +93,7 @@ def mbou():
         return render_template('mbou_lgot_pit.html', data=data, uuidtest=uuidtest)
     else:
         pass
+
 
 @app.route('/оздоровление уникальность', methods=['GET', 'POST'])
 def new():
